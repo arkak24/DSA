@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// BRUTE
+// BRUTE -> TC O(n)+O(nlogn)
 // sort the array and then find the second largest
 // int second_largest(vector<int> vect){
 
@@ -21,7 +21,7 @@ using namespace std;
 
 /* ------------------------------------------------------------------------------------------ */
 
-// BETTER
+// BETTER -> O(n)+O(n)
 // find the largest and then compare to find the second largest
 // int second_largest(vector<int> vect){
 //       int largest = -1;       // take largest if array contains negative numbers
@@ -42,7 +42,7 @@ using namespace std;
 
 /* ------------------------------------------------------------------------------------------ */
 
-// OPTIMAL
+// OPTIMAL -> O(n)
 // find the largest and the second largest simultaneously
 int second_largest(vector<int> vect){
       int largest = vect[0];
