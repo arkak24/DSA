@@ -30,18 +30,21 @@ void next_per(std::vector<int> &vect){
       }
       if(idx == -1){    // if it is the last and the greatest permutation possible
             std::reverse(vect.begin(), vect.end());
+            return;
       }
-      for(int i = n-1; i >= idx; i--){
+      for(int i = n-1; i > idx; i--){
             if(vect[i] > vect[idx]){
                   std::swap(vect[i], vect[idx]);
                   break;
             }
       }
       std::reverse(vect.begin()+idx+1, vect.end());
+      return;
 }
 
 int main(){
-      std::vector<int> vect = {2, 1, 5, 4, 3, 0, 0};
+      // std::vector<int> vect = {2, 1, 5, 4, 3, 0, 0};
+      std::vector<int> vect = {1, 3, 2};
 
       next_per(vect);
 
