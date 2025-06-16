@@ -41,6 +41,8 @@ using namespace std;
 //       return count;
 // }
 
+// OPTIMAL
+// TC : O(n.logn); SC : O(n)
 int number_of_subarrays(vector<int> vect, long long k){
       std::unordered_map<int, int> mpp;
       mpp[0] = 1;
