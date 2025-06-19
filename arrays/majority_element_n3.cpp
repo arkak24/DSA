@@ -46,6 +46,7 @@
 
 // BETTER2
 // use hashmap
+// TC : O(n.logn + n); SC : (n)
 // std::vector<int> majority_element(std::vector<int> vec){
       // std::vector<int> ans;
       // std::map<int, int> mpp;
