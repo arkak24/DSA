@@ -63,7 +63,7 @@ int majority_element(std::vector<int> vec){
                   check++;
             }
       }
-      if(check > vec.size()){
+      if(check > vec.size()/2){
             return element;
       }
       return -1;
