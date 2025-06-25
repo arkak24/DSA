@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 // BRUTE
 // merge sorted and then divide
@@ -41,9 +42,55 @@
 //       }
 // }
 
-// OPTIMAL
-void merge(std::vector<int> &nums1, std::vector<int> &nums2, int n, int m){
+// OPTIMAL 1
+// 2 pointer approach, taking advantage of the fact that the array are sorted
+// TC : O(min(n, m))+O(n.logn)+O(m.logm); SC : O(1)
+// void merge(std::vector<int> &nums1, std::vector<int> &nums2, int n, int m){
+//       int left = n - 1;
+//       int right = 0;
+//       while(left >= 0 && right < m){
+//             if(nums1[left] > nums2[right]){
+//                   std::swap(nums1[left], nums2[right]);
+//                   left--;
+//                   right++;
+//             }
+//             else{
+//                   break;
+//             }
+//       }
+//       std::sort(nums1.begin(), nums1.end());
+//       std::sort(nums2.begin(), nums2.end());
+// }
 
+// OPTIMAL 2
+// gap method, using shell sort
+void swap_element(std::vector<int> &nums1, std::vector<int> &nums2, int idx1, int idx2){
+      if(nums1[idx1] > nums2[idx2]){
+            std::swap(nums1[idx1], nums2[idx2]);
+      }
+}
+void merge(std::vector<int> &nums1, std::vector<int> &nums2, int n, int m){
+      int len = n+m;
+      int gap = (len/2) + (len%2);
+      while(gap > 0){
+            int left = 0;
+            int right = left + gap;
+            while(right < len){
+                  if(left < n && right >= n){
+                        swap_element(nums1, nums2, left, right-n);
+                  }
+                  else if(left >= n){
+                        swap_element(nums2, nums2, left-n, right-n);
+                  }
+                  else{
+                        swap_element(nums1, nums1, left, right);
+                  }
+                  left++;
+                  right++;
+            }
+            if(gap == 1) break;
+            gap = (gap/2) + (gap%2);
+      }
 }
 
 int main(){
