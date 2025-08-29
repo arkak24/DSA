@@ -1,3 +1,6 @@
+#ifndef DOUBLY_STRUCTURE
+#define DOUBLY_STRUCTURE
+
 #include <iostream>
 #include <vector>
 
@@ -17,11 +20,12 @@ class Node{
                   data = data1;
                   next = next1;
                   back = back1;
-            
       }
 };
 
 Node* convertArr2DLL(std::vector<int> &arr){
+      if(arr.empty()) return nullptr;
+
       Node* head = new Node(arr[0]);
       Node* prev = head;
 
@@ -30,7 +34,6 @@ Node* convertArr2DLL(std::vector<int> &arr){
             prev -> next = temp;
             prev = temp;
       }
-
       return head;
 }
 
@@ -52,14 +55,4 @@ void free_DLL(Node* head){
       }
 }
 
-int main(){
-      std::vector<int> vect = {1, 2, 3, 4, 5, 6};
-
-      Node* head = convertArr2DLL(vect);
-
-      print_DLL(head);
-
-      free_DLL(head);
-
-      return 0;
-}
+#endif

@@ -1,46 +1,23 @@
-#include <iostream>
-#include <vector>
-
-class Node{
-      public:
-            int data;
-            Node* next_addr;
-
-            Node(int value){
-                  data = value;
-                  next_addr = nullptr;
-            }
-};
-
-Node* convertArr2LL(std::vector<int> arr){
-      Node* head = new Node(arr[0]);
-      Node* mover = head;
-      for(int i = 1; i < arr.size(); i++){
-            Node* temp = new Node(arr[i]);
-            mover -> next_addr = temp;
-            mover = temp;
-      }
-      return head;
-}     
+#include "singly_structure.hpp"
 
 // Node* delete_head(Node* head){
 //       Node* temp = head;
-//       head = head -> next_addr;
+//       head = head -> next;
 //       delete temp;
 //       return head;
 // }
 
 // Node* delete_tail(Node* head){
-//       if(head == nullptr || head -> next_addr == nullptr){
+//       if(head == nullptr || head -> next == nullptr){
 //             return nullptr; // as there is no tail present in this case
 //       }
 //       else{
 //             Node* temp = head;
-//             while(temp -> next_addr -> next_addr != nullptr){
-//                   temp = temp -> next_addr;
+//             while(temp -> next -> next != nullptr){
+//                   temp = temp -> next;
 //             }
-//             delete temp -> next_addr;
-//             temp -> next_addr = nullptr;
+//             delete temp -> next;
+//             temp -> next = nullptr;
 //             return head;
 //       }
 // }
@@ -50,7 +27,7 @@ Node* convertArr2LL(std::vector<int> arr){
 //       if(head == nullptr) return head;
 //       if(k == 1){
 //             Node* temp = head;
-//             head = head -> next_addr;
+//             head = head -> next;
 //             delete temp;
 //             return head;
 //       }
@@ -60,12 +37,12 @@ Node* convertArr2LL(std::vector<int> arr){
 //       while(temp != nullptr){
 //             count++;
 //             if(count == k){
-//                   prev -> next_addr = prev -> next_addr -> next_addr;
+//                   prev -> next = prev -> next -> next;
 //                   delete temp;
 //                   break;
 //             }
 //             prev = temp;
-//             temp = temp -> next_addr;
+//             temp = temp -> next;
 //       }
 //       return head;
 // }
@@ -73,24 +50,22 @@ Node* convertArr2LL(std::vector<int> arr){
 // deleting element by its value
 Node* delete_node(Node* head, int val){
       if(head == nullptr) return head;
-      if(head -> data = val){
+      if(head -> data == val){
             Node* temp = head;
-            head = head -> next_addr;
+            head = head -> next;
             delete temp;
             return head;
       }
-      int count = 0;
-      Node* temp = head;
-      Node* prev = nullptr;
+      Node* temp = head -> next;
+      Node* prev = head;
       while(temp != nullptr){
-            count++;
-            if(temp -> data = val){
-                  prev -> next_addr = prev -> next_addr -> next_addr;
+            if(temp -> data == val){
+                  prev -> next = prev -> next -> next;
                   delete temp;
                   break;
             }
             prev = temp;
-            temp = temp -> next_addr;
+            temp = temp -> next;
       }
       return head; 
 }
@@ -101,14 +76,10 @@ int main(){
 
       // head = delete_head(head);
       // head = delete_tail(head);
-      // head = delete_kth(head, 3);
+      // head = delete_kth(head, 6);
+      head = delete_node(head, 9);
 
-      Node* temp = head;
-      while(temp != nullptr){
-            std::cout << temp -> data << "\t";
-            temp = temp -> next_addr;
-      }
-      std::cout << "\n";
+      print_list(head);
 
       return 0;
 }

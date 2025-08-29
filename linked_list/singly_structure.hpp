@@ -1,19 +1,20 @@
+#ifndef SINGLY_STRUCTURE_HPP
+#define SINGLY_STRUCTURE_HPP
+
 #include <iostream>
 #include <vector>
 
-class Node {
+class Node{
       public:
-            int data;     // data stored in the node
-            Node* next;   // pointer to the next node
+            int data;
+            Node* next;
 
-            // Constructor 1: Initialize both data and next explicitly
-            Node(int data1, Node* next1) {
+            Node(int data1, Node* next1){
                   data = data1;
                   next = next1;
             }
 
-            // Constructor 2: Initialize data, automatically set next to nullptr
-            Node(int data1) {
+            Node(int data1){
                   data = data1;
                   next = nullptr;
             }
@@ -65,7 +66,7 @@ int search_element(Node* head, int num){
 }
 
 // fucntion to cleanup
-void freeList(Node* head) {
+void free_List(Node* head) {
       while (head != nullptr) {
             Node* nextNode = head->next;
             delete head;
@@ -73,25 +74,13 @@ void freeList(Node* head) {
       }
 }
 
-
-int main() {
-      std::vector<int> vect = {2, 3, 8, 5};       // input array
-
-      // Convert array to linked list
-      Node* head = convertArr2LL(vect);
-
-      // Traversal: print each node's data
+void print_list(Node* head){
       Node* temp = head;
-      std::cout << "Linked list elements: ";
-      while (temp != nullptr) {                   // stop when temp hits null
-            std::cout << temp->data << "\t";
-            temp = temp->next;                      // move to next node
+      while(temp != nullptr){
+            std::cout << temp -> data << "\t";
+            temp = temp -> next;
       }
       std::cout << "\n";
-
-      // Count nodes
-      int totalNodes = countNodes(head);
-      std::cout << "Number of nodes: " << totalNodes << "\n";
-
-      return 0;
 }
+
+#endif

@@ -1,39 +1,11 @@
-#include <iostream>
-#include <vector>
-
-class Node{
-      public:
-            int data;
-            Node* next_addr;
-
-            Node(int value){
-                  data = value;
-                  next_addr = nullptr;
-            }
-
-            Node(int value, Node* next){
-                  data = value;
-                  next_addr = next;
-            }
-};
-
-Node* convertArr2LL(std::vector<int> arr){
-      Node* head = new Node(arr[0]);
-      Node* mover = head;
-      for(int i = 1; i < arr.size(); i++){
-            Node* temp = new Node(arr[i]);
-            mover -> next_addr = temp;
-            mover = temp;
-      }
-      return head;
-}     
+#include "singly_structure.hpp"
 
 // Node* insert_head(Node* head){
 //       int val;
 //       std::cout << "Enter the value of the node : ";
 //       std::cin >> val;
 //       Node* temp = new Node(val);
-//       temp -> next_addr = head;
+//       temp -> next = head;
 //       head = temp;
 //       return head;
 // }
@@ -47,11 +19,11 @@ Node* convertArr2LL(std::vector<int> arr){
 //             return new Node(val); 
 //       }
 //       Node* temp = head;
-//       while(temp -> next_addr != nullptr){
-//             temp = temp -> next_addr;
+//       while(temp -> next != nullptr){
+//             temp = temp -> next;
 //       }
 //       Node* new_node = new Node(val);
-//       temp -> next_addr = new_node;
+//       temp -> next = new_node;
 //       return head;
 // }
 
@@ -75,10 +47,10 @@ Node* convertArr2LL(std::vector<int> arr){
 //             count++;
 //             if(count == k-1){
 //                   Node* new_mem = new Node(val);
-//                   new_mem -> next_addr = temp -> next_addr;
-//                   temp -> next_addr = new_mem;
+//                   new_mem -> next = temp -> next;
+//                   temp -> next = new_mem;
 //             }
-//             temp = temp -> next_addr;
+//             temp = temp -> next;
 //       }
 //       return head;
 // }
@@ -94,15 +66,15 @@ Node* insert_before_val(Node* head, int new_val, int element){
       }
       Node* temp = head;
       bool found = false;
-      while(temp -> next_addr != nullptr){
-            if(temp -> next_addr -> data == element){
+      while(temp -> next != nullptr){
+            if(temp -> next -> data == element){
                   Node* new_mem = new Node(new_val);
-                  new_mem -> next_addr = temp -> next_addr;
-                  temp -> next_addr = new_mem;
+                  new_mem -> next = temp -> next;
+                  temp -> next = new_mem;
                   found = true;
                   break;
             }
-            temp = temp -> next_addr;
+            temp = temp -> next;
       }
       if(found == false){
             // do nothing
@@ -123,7 +95,7 @@ int main(){
       Node* temp = head;
       while(temp != nullptr){
             std::cout << temp -> data << "\t";
-            temp = temp -> next_addr;
+            temp = temp -> next;
       }
       std::cout << "\n";
 
