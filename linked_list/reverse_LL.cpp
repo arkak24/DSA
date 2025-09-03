@@ -26,7 +26,7 @@
 //       Node* current = head;
 //       Node* front = nullptr;
 
-//       while(front != nullptr){
+//       while(current != nullptr){
 //             front = current -> next;
 //             current -> next = back;
 //             back = current;
