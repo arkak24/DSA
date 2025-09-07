@@ -4,22 +4,22 @@ Node* revDLL(Node* head){
       Node* current = head;
       Node* last = nullptr;
       while(current != nullptr){
-            last = current -> back;
-            current -> back = current -> next;
+            last = current -> prev;
+            current -> prev = current -> next;
             current -> next = last;
-            current = current -> back;
+            current = current -> prev;
       }
-      return last -> back;
+      return last -> prev;
 }
 
 // Node* revDLL(Node* head){
 //       Node* current = head;
 //       while(current != nullptr){
 //             Node* temp = current -> next;
-//             current -> next = current -> back;
-//             current -> back = temp;
-//             if(current -> back != nullptr){
-//                   current = current -> back;
+//             current -> next = current -> prev;
+//             current -> prev = temp;
+//             if(current -> prev != nullptr){
+//                   current = current -> prev;
 //             }
 //             else{
 //                   break;

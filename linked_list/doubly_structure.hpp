@@ -8,18 +8,18 @@ class Node{
       public:
             int data;
             Node* next;
-            Node* back;
+            Node* prev;
 
             Node(int data1){
                   data = data1;
                   next = nullptr;
-                  back = nullptr;
+                  prev = nullptr;
             }
 
-            Node(int data1, Node* next1, Node* back1){
+            Node(int data1, Node* next1, Node* prev1){
                   data = data1;
                   next = next1;
-                  back = back1;
+                  prev = prev1;
       }
 };
 
@@ -27,12 +27,12 @@ Node* convertArr2DLL(std::vector<int> &arr){
       if(arr.empty()) return nullptr;
 
       Node* head = new Node(arr[0]);
-      Node* prev = head;
+      Node* back = head;
 
       for(int i = 1; i < arr.size(); i++){
-            Node* temp = new Node(arr[i], nullptr, prev);
-            prev -> next = temp;
-            prev = temp;
+            Node* temp = new Node(arr[i], nullptr, back);
+            back -> next = temp;
+            back = temp;
       }
       return head;
 }
