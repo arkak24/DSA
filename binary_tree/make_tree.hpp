@@ -3,6 +3,7 @@
 #ifndef MAKE_TREE_HPP
 #define MAKE_TREE_HPP
 
+#include<iostream>
 #include<cstdio>
 #include<cstdlib>
 
@@ -163,6 +164,15 @@ inline node* sample_tree() {
 
       root = n10;
       temp = n10;
+
+      std::cout << R"(
+                  10
+                 /  \
+                5    20
+               / \   / \
+              3  7  15  30
+      )";
+      std::cout << "\n";
 
       return root;
 }
