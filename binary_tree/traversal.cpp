@@ -41,7 +41,7 @@ void print_tree(node* root){
 }
 
 int main(){
-      node* tree_root = sample_tree();
+      node* tree_root = make_tree();
 
       print_tree(tree_root);
 
